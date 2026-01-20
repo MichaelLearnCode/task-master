@@ -1,0 +1,23 @@
+#Python (Backend)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env/
+instance/
+
+#Nodejs (Frontend)
+node_modules/
+.next/
+out/
+build/
+.env*.local
+
+#OS, IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+#Docker
+.docker/
