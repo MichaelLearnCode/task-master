@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:15
+    container_name: taskmaster_db_prod
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: taskmaster
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile # Dockerfile dùng Gunicorn
+    container_name: taskmaster_api_prod
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/taskmaster
+      - FLASK_DEBUG=0
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    depends_on:
+      - db
+
+volumes:
+  postgres_data_prod:

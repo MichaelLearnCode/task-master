@@ -1,0 +1,21 @@
+# Ignore Git & Docker
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Ignore Python local files
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+
+# Ignore secrets & logs
+.env
+*.log
+instance/
